@@ -1,23 +1,67 @@
 import { gql } from "@apollo/client"
 
-const GET_LOCATIONS = gql`
-  query GetLocations {
-    locations {
-      id
-      name
+const COMPANY = gql`
+  query Company {
+    company {
+      ceo
+      coo
+      cto
+    }
+  }
+`
+
+const ROCKETS = gql`
+  query Rockets {
+    rockets {
+      boosters
+      active
+      company
+      cost_per_launch
+      country
       description
-      photo
+      first_flight
+      mass {
+        kg
+      }
+      success_rate_pct
     }
   }
 `
 
-const GET_DATA = gql`
-  query GetLocations {
-    locations {
+const SHIPS = gql`
+  query Ships {
+    ships {
+      active
+      abs
+      attempted_landings
+      class
+      course_deg
+      home_port
+      id
+      image
+      imo
+      missions {
+        flight
+        name
+      }
+      model
+      mmsi
       name
-      photo
+      position {
+        latitude
+        longitude
+      }
+      roles
+      speed_kn
+      status
+      successful_landings
+      type
+      url
+      weight_kg
+      weight_lbs
+      year_built
     }
   }
 `
 
-export { GET_LOCATIONS, GET_DATA }
+export { COMPANY, ROCKETS, SHIPS }

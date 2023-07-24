@@ -1,0 +1,18 @@
+.shipConstainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.shipCard {
+  display: flex;
+  gap: 1rem;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  flex: 0 1 40%;
+}
+
+.shipCard img {
+  border-radius: 1rem;
+}

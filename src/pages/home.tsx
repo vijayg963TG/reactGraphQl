@@ -1,30 +1,38 @@
-import React from "react"
-import { useQuery, gql } from "@apollo/client"
-import { GET_LOCATIONS } from "../graphql/query"
+import { useQuery } from "@apollo/client"
+import { COMPANY } from "../graphql/query"
 import { Link } from "react-router-dom"
-
-interface locationProps {
-  id: number | string
-  name: string
-  description: string
-  photo: any | null
-}
+import { Rockets } from "../components/rockets"
+import "../stylesheet/home.css"
+import { Users } from "../components/users"
 
 export const Home = () => {
-  const { loading, error, data } = useQuery(GET_LOCATIONS)
+  const { loading, error, data } = useQuery(COMPANY)
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error : {error.message}</p>
-  return <>
-  <Link to={"/dogs"} >Dogs Page</Link>
-{  data.locations.map(({ id, name, description, photo }:locationProps) => (
-    <div key={id}>
-      <h3>{name}</h3>
-      <img width="400" height="250" alt="location-reference" src={`${photo}`} />
-      <br />
-      <b>About this location:</b>
-      <p>{description}</p>
-      <br />
+  const { ceo, coo, cto } = data.company
+  return (
+    <div className="container">
+      <button>
+        <Link to={"/capsules"}>Go To Ships</Link>
+      </button>
+      {data && (
+        <div>
+          <h3>Campany Info : </h3>
+          <p>
+            <b>CEO :</b> {ceo}
+          </p>
+          <p>
+            <b>COO :</b> {coo}
+          </p>
+          <p>
+            <b>CTO :</b> {cto}
+          </p>
+        </div>
+      )}
+      <hr />
+      <Users />
+      <hr />
+      <Rockets />
     </div>
-  ))}
-  </>
+  )
 }

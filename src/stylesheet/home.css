@@ -1,0 +1,16 @@
+.container,
+.rocketCard {
+  border: 5px solid rgb(218, 214, 218);
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+.rocketCard {
+  width: 45.5%;
+}
+
+.rockets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
